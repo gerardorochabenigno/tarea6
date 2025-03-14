@@ -74,7 +74,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     df = series_sie_completa(TOKEN_SIE, args.serie)
     nombre_serie = os.path.join('data/raw', args.serie)+'.csv'
-    df.to_csv(nombre_serie)
+    df.to_csv(nombre_serie, index = False)
 
     
     

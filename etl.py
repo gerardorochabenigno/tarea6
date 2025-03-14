@@ -21,13 +21,13 @@ def series_sie_completa(token:str, serie:str) -> pd.DataFrame:
         serie: Identificador de la serie. Solo tres series son permitidas
             'tipo_de_cambio':  'SF43718', Tipo de cambio FIX determinado por el Banco de México con base en un promedio de cotizaciones del mercado de cambios al mayoreo para operaciones liquidables el segundo día hábil bancario siguiente.
             'tasa_de_interes': 'SF43783', TIIE 28 aplicable en la fecha correspondiente (fecha de publicación en el Diario Oficial de la Federación) y determinada por el Banco de México.
-            'inflacion':       'SP74833', Variación anual del INPC. El INPC lo construye el INEGI, pero Banco de México también publica esta información en el SIE.
+            'inflacion':       'SP1', Indice nacional de Precios al Consumidor. El INPC lo construye el INEGI, pero Banco de México también publica esta información en el SIE.
     Returns:
         pd.Dataframe: pandas dataframe con 
 
     """
     if serie in ['tipo_de_cambio','tasa_de_interes','inflacion']:
-        idserie = {'tipo_de_cambio':'SF43718', 'tasa_de_interes':'SF43783', 'inflacion':'SP74833'}
+        idserie = {'tipo_de_cambio':'SF43718', 'tasa_de_interes':'SF43783', 'inflacion':'SP1'}
     else:
         raise Exception("Solo las series 'SF43718', 'SF43783', 'SP74833' son permitidas.")
 
@@ -51,6 +51,12 @@ def series_sie_completa(token:str, serie:str) -> pd.DataFrame:
         df['dato'] = df['dato'].replace(valores_invalidos, np.nan)
         df['dato'] = df['dato'].astype(float)
         df = df.rename(columns={'dato':serie})
+
+        if serie == 'inflacion':
+            df['inpc_lag_12'] = df['inflacion'].shift(12)
+            df['inflacion'] = 100*(df['inflacion']/df['inpc_lag_12']-1)
+            df = df[['fecha', serie]]
+
         return df
     
     except:

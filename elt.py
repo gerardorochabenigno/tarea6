@@ -8,7 +8,8 @@ import yaml
 with open("config/config.yaml", "r") as file:
     config = yaml.safe_load(file)
 
-LOG_PATH = config['log_elt'] 
+LOG_PATH = config['log_elt']
+PROFILE = config['profile']
 
 
 # Configuración del log
@@ -20,7 +21,7 @@ logging.basicConfig(filename=LOG_PATH, level=logging.INFO, format="%(asctime)s -
 if __name__ == "__main__":
     try:
 
-        session = boto3.Session(profile_name='datascientist')
+        session = boto3.Session(profile_name=PROFILE)
         s3 = session.client('s3')
 
 

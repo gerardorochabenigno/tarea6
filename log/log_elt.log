@@ -1,0 +1,4 @@
+2025-03-16 23:11:03,472 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-03-16 23:11:08,525 - INFO - Tabla inflación creada con éxito.
+2025-03-16 23:11:14,820 - INFO - Tabla tasa de interés creada con éxito.
+2025-03-16 23:11:21,144 - INFO - Tabla tipo de cambio creada con éxito.

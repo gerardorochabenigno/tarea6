@@ -4,6 +4,8 @@ import pandas as pd
 import requests
 import numpy as np
 import logging
+import boto3
+import os
 
 def series_sie_completa(token: str, serie: str) -> pd.DataFrame:
     """
@@ -67,4 +69,43 @@ def series_sie_completa(token: str, serie: str) -> pd.DataFrame:
         error_msg = f"Error inesperado en {serie}: {e}"
         logging.error(error_msg)
 
-    return pd.DataFrame()  
+    return pd.DataFrame()
+
+
+def subir_a_s3(ruta_local: str, ruta_s3: str, bucket_name: str = 'itam-analytics-grb', profile_name: str = None) -> None:
+    """
+    Sube un archivo a S3.
+
+    Args:
+        ruta_local (str): Ruta local del archivo.
+        ruta_s3 (str): Ruta dentro del bucket de S3.
+        bucket_name (str, opcional): Nombre del bucket de S3. Default: 'itam-analytics-grb'.
+        profile_name (str, opcional): Perfil de AWS a usar. Si es None, usa el perfil por defecto.
+
+    Returns:
+        None
+    """
+    try:
+        # Verificar si el archivo local existe
+        if not os.path.exists(ruta_local):
+            raise FileNotFoundError(f"El archivo {ruta_local} no existe.")
+
+        # Crear sesión de boto3 con perfil opcional
+        if profile_name:
+            session = boto3.Session(profile_name=profile_name)
+            s3 = session.client("s3")
+        else:
+            s3 = boto3.client("s3")
+
+        # Subir archivo a S3
+        s3.upload_file(ruta_local, bucket_name, ruta_s3)
+        logging.info(f"Archivo {ruta_local} subido exitosamente a s3://{bucket_name}/{ruta_s3}")
+        print(f"Archivo subido exitosamente a s3://{bucket_name}/{ruta_s3}")
+
+    except FileNotFoundError as e:
+        logging.error(f"Archivo no encontrado: {e}")
+        print(f"Error: {e}")
+
+    except Exception as e:
+        logging.error(f"Error al subir {ruta_local} a S3: {e}")
+        print(f"Error al subir {ruta_local} a S3: {e}")

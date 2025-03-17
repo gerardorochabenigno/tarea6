@@ -1,1 +1,21 @@
-2025-03-14 19:00:12,400 - INFO - ETL exitoso. Datos guardados en data/raw\inflacion.csv
+2025-03-16 21:25:09,030 - INFO - ETL exitoso. Datos guardados en data/raw/inflacion.csv
+2025-03-16 21:25:11,241 - ERROR - Error al subir data/raw/inflacion.csv a S3: Unable to locate credentials
+2025-03-16 21:26:06,269 - INFO - ETL exitoso. Datos guardados en data/raw/inflacion.csv
+2025-03-16 21:26:08,363 - ERROR - Error al subir data/raw/inflacion.csv a S3: Unable to locate credentials
+2025-03-16 21:26:08,363 - INFO - Archivo data/raw/inflacion.csv subido exitosamente a s3://itam-analytics-grb/econ/raw/inflacion.csv
+2025-03-16 21:26:47,166 - INFO - ETL exitoso. Datos guardados en data/raw/inflacion.csv
+2025-03-16 21:26:47,173 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-03-16 21:26:48,122 - INFO - Archivo data/raw/inflacion.csv subido exitosamente a s3://itam-analytics-grb/econ/raw/inflacion.csv
+2025-03-16 21:26:48,125 - INFO - Archivo data/raw/inflacion.csv subido exitosamente a s3://itam-analytics-grb/econ/raw/inflacion.csv
+2025-03-16 21:28:26,989 - INFO - ETL exitoso. Datos guardados en data/raw/inflacion.csv
+2025-03-16 21:28:26,996 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-03-16 21:28:28,421 - INFO - Archivo data/raw/inflacion.csv subido exitosamente a s3://itam-analytics-grb/econ/raw/inflacion/inflacion.csv
+2025-03-16 21:28:28,424 - INFO - Archivo data/raw/inflacion.csv subido exitosamente a s3://itam-analytics-grb/econ/raw/inflacion/inflacion.csv
+2025-03-16 21:29:05,576 - INFO - ETL exitoso. Datos guardados en data/raw/tasa_de_interes.csv
+2025-03-16 21:29:05,583 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-03-16 21:29:07,459 - INFO - Archivo data/raw/tasa_de_interes.csv subido exitosamente a s3://itam-analytics-grb/econ/raw/tasa_de_interes/tasa_de_interes.csv
+2025-03-16 21:29:07,462 - INFO - Archivo data/raw/tasa_de_interes.csv subido exitosamente a s3://itam-analytics-grb/econ/raw/tasa_de_interes/tasa_de_interes.csv
+2025-03-16 21:29:31,020 - INFO - ETL exitoso. Datos guardados en data/raw/tipo_de_cambio.csv
+2025-03-16 21:29:31,027 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-03-16 21:29:33,005 - INFO - Archivo data/raw/tipo_de_cambio.csv subido exitosamente a s3://itam-analytics-grb/econ/raw/tipo_de_cambio/tipo_de_cambio.csv
+2025-03-16 21:29:33,007 - INFO - Archivo data/raw/tipo_de_cambio.csv subido exitosamente a s3://itam-analytics-grb/econ/raw/tipo_de_cambio/tipo_de_cambio.csv

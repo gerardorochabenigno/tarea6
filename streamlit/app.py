@@ -254,7 +254,7 @@ Interpretación de \( $\alpha$ \):
     st.write(texto)
 
     if rank > 0:
-        vecm_model = VECM(series, k_ar_diff=2, coint_rank=rank, deterministic="ci")  # Ajuste según prueba Johansen
+        vecm_model = VECM(series, k_ar_diff=1, coint_rank=rank, deterministic="ci")  # Ajuste según prueba Johansen
         vecm_result = vecm_model.fit()
 
         # Mostrar matrices clave
